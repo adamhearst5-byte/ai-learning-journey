@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages (Alternative)
+name: Deploy to GitHub Pages (Alternative - DISABLED)
 
+# This workflow is disabled to prevent conflicts with the main deployment workflow
+# Enable by changing "workflow_dispatch_disabled" back to "workflow_dispatch"
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch_disabled:
 
 jobs:
   deploy:

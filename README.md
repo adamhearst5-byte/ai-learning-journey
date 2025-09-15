@@ -117,12 +117,21 @@ npm run build
 
 ### 🔧 Troubleshooting Deployment Issues
 
-If you encounter **Git error (exit code 128)** during deployment:
+If you encounter deployment issues, try these solutions:
+
+#### **GitHub Actions Environment Error**
+If you see `Missing environment. Ensure your workflow's deployment job has an environment`:
+- This has been fixed in the updated workflow
+- Ensure GitHub Pages is enabled in repository Settings → Pages
+- Set source to "GitHub Actions" (not "Deploy from a branch")
+
+#### **Git Error (Exit Code 128)**
+If you encounter Git errors during deployment:
 
 1. **Enable GitHub Pages:**
    - Go to repository Settings → Pages
-   - Set Source to "Deploy from a branch"
-   - Select "gh-pages" branch and "/" root folder
+   - Set Source to "GitHub Actions" (recommended) or "Deploy from a branch"
+   - If using branch deployment, select "gh-pages" branch and "/" root folder
    - Click Save
 
 2. **Check Repository Permissions:**
@@ -135,13 +144,16 @@ If you encounter **Git error (exit code 128)** during deployment:
    npm run deploy
    ```
 
-4. **Alternative: Use GitHub Actions**
-   - The repository includes updated GitHub Actions workflows
-   - Push to main branch to trigger automatic deployment
+4. **Automatic Deployment with GitHub Actions (Recommended):**
+   - Push changes to main branch to trigger automatic deployment
    - Check Actions tab for deployment status
+   - The workflow includes proper environment configuration
 
 5. **Common Fixes:**
    ```bash
+   # Run deployment diagnostics
+   npm run check-deployment
+   
    # Clear npm cache
    npm cache clean --force
    
