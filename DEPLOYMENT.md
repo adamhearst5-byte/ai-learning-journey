@@ -43,7 +43,7 @@ npm run check-deployment
 - [ ] Repository is public or has GitHub Pages enabled
 - [ ] Go to Settings → Pages
 - [ ] Source: "Deploy from a branch"
-- [ ] Branch: "gh-pages"
+- [ ] Branch: "gh-pages" (will be created automatically on first deployment)
 - [ ] Folder: "/ (root)"
 - [ ] GitHub Actions enabled in Settings → Actions
 
@@ -103,7 +103,7 @@ npm run build
 - `npm run check-deployment` - Verify deployment setup
 
 ### GitHub Actions Workflows
-- **deploy.yml** - Main deployment workflow (GitHub Pages native)
-- **deploy-ghpages.yml** - Alternative gh-pages deployment
+- **deploy-ghpages.yml** - Main deployment workflow (creates gh-pages branch)
+- **deploy.yml** - Alternative native GitHub Pages deployment (disabled)
 
 The project is configured to use GitHub's native Pages deployment for better reliability and permissions handling.
