@@ -3,8 +3,7 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
 
 # Allow permissions for GitHub Pages deployment
 permissions:
@@ -20,6 +19,9 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
     - name: Checkout
@@ -30,11 +32,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
 
     - name: Install dependencies
       run: npm ci
+
+    - name: Run tests
+      run: npm test -- --coverage --watchAll=false --passWithNoTests
 
     - name: Build
       run: npm run build
@@ -45,6 +50,11 @@ jobs:
         path: ./build
 
     - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
       id: deployment
       uses: actions/deploy-pages@v4
+
+    - name: Deployment summary
+      run: |
+        echo "🚀 Deployment completed!"
+        echo "🌐 Site URL: ${{ steps.deployment.outputs.page_url }}"
+        echo "📊 Check deployment status: https://github.com/${{ github.repository }}/actions"
