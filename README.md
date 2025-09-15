@@ -115,6 +115,47 @@ npm run build
 - `npm test` - Run test suite
 - `npm run deploy` - Deploy to GitHub Pages (requires gh-pages setup)
 
+### 🔧 Troubleshooting Deployment Issues
+
+If you encounter **Git error (exit code 128)** during deployment:
+
+1. **Enable GitHub Pages:**
+   - Go to repository Settings → Pages
+   - Set Source to "Deploy from a branch"
+   - Select "gh-pages" branch and "/" root folder
+   - Click Save
+
+2. **Check Repository Permissions:**
+   - Ensure the repository is public or has appropriate access
+   - Verify GitHub Actions are enabled in Settings → Actions
+
+3. **Manual Deployment (if Actions fail):**
+   ```bash
+   npm run build
+   npm run deploy
+   ```
+
+4. **Alternative: Use GitHub Actions**
+   - The repository includes updated GitHub Actions workflows
+   - Push to main branch to trigger automatic deployment
+   - Check Actions tab for deployment status
+
+5. **Common Fixes:**
+   ```bash
+   # Clear npm cache
+   npm cache clean --force
+   
+   # Reinstall dependencies
+   rm -rf node_modules package-lock.json
+   npm install
+   
+   # Rebuild and deploy
+   npm run build
+   npm run deploy
+   ```
+
+**Note:** Deployment only works from the `main` branch. Ensure your changes are merged to main for GitHub Pages deployment.
+
 ## 📱 Usage Guide
 
 ### Getting Started
