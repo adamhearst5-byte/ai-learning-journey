@@ -114,6 +114,17 @@ npm run build
 - `npm run build` - Create production build
 - `npm test` - Run test suite
 - `npm run deploy` - Deploy to GitHub Pages (requires gh-pages setup)
+- `npm run check-deployment` - Verify deployment setup and readiness
+- `npm run verify-deployment` - Test deployed site functionality
+
+### 🚀 Deployment
+
+For detailed deployment instructions, see **[DEPLOYMENT.md](./DEPLOYMENT.md)**
+
+**Quick Start:**
+1. Merge changes to main branch
+2. Enable GitHub Pages in Settings → Pages (select "gh-pages" branch)
+3. Push to main triggers automatic deployment
 
 ### 🔧 Troubleshooting Deployment Issues
 
