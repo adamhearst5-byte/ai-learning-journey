@@ -101,3 +101,12 @@ jspm_packages/
 *.njsproj
 *.sln
 *.sw?
+
+# GitHub Pages deployment
+.gh-pages/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
