@@ -2,12 +2,14 @@
 
 ## Issues Identified and Fixed
 
-### 1. **Conflicting GitHub Actions Workflows**
-- **Problem**: Two workflows (`deploy.yml` and `deploy-ghpages.yml`) both triggered on pushes to main
-- **Solution**: Disabled the alternative workflow to prevent conflicts
-- **File**: `.github/workflows/deploy-ghpages.yml`
+### 1. **GitHub Pages Branch Configuration Mismatch**
+- **Problem**: GitHub Pages settings expect `gh-pages` branch, but deployment was using GitHub's native Pages deployment
+- **Solution**: Switched to gh-pages branch deployment method that creates the required branch
+- **Files Updated**: 
+  - `.github/workflows/deploy.yml` (disabled native deployment)
+  - `.github/workflows/deploy-ghpages.yml` (enabled gh-pages deployment)
 
-### 2. **Missing Asset Reference**
+### 2. **Missing Asset Reference** (Previously Fixed)
 - **Problem**: `index.html` referenced `logo192.png` which doesn't exist
 - **Solution**: Removed the broken apple-touch-icon reference
 - **File**: `public/index.html`
@@ -25,6 +27,7 @@
 - ✅ React Router basename configured properly
 - ✅ GitHub Actions workflow permissions set correctly
 - ✅ `.gitignore` properly configured
+- ✅ gh-pages deployment package configured
 
 ### Application Structure
 - ✅ TypeScript React app with Bootstrap styling
@@ -39,7 +42,7 @@
 - **Branch**: Feature branch ready for merge to main
 - **Build**: Successful (93.19 kB JS, 33.58 kB CSS)
 - **Target URL**: https://adamhearst5-byte.github.io/ai-learning-journey
-- **Workflow**: GitHub Pages native deployment ready
+- **Workflow**: gh-pages branch deployment ready
 
 ### Next Steps for User
 1. **Merge this PR to main branch**
@@ -49,13 +52,21 @@
    - Branch: "gh-pages"
    - Folder: "/ (root)"
 3. **Push triggers automatic deployment via GitHub Actions**
-4. **Site will be live at the target URL within 5-10 minutes**
+4. **The first deployment will create the gh-pages branch automatically**
+5. **Site will be live at the target URL within 5-10 minutes**
 
 ## 🔧 Technical Details
 
 ### Fixed Files
-- `.github/workflows/deploy-ghpages.yml` - Disabled conflicting workflow
-- `public/index.html` - Removed broken asset reference
+- `.github/workflows/deploy.yml` - Disabled native GitHub Pages deployment
+- `.github/workflows/deploy-ghpages.yml` - Enabled gh-pages branch deployment
+- `deployment-fix-summary.md` - Updated documentation
+- `DEPLOYMENT.md` - Updated technical details
+
+### Deployment Method
+- **Previous**: GitHub native Pages deployment (artifact-based)
+- **Current**: gh-pages branch deployment (creates dedicated branch)
+- **Why Changed**: User's GitHub Pages settings expect gh-pages branch
 
 ### Working Features Ready for Deployment
 - Interactive dashboard with progress tracking
@@ -68,4 +79,4 @@
 - Responsive design for mobile/desktop
 - Dark mode theme support
 
-The website is now ready for successful deployment to GitHub Pages! 🎉
+The website is now configured to deploy via gh-pages branch, matching your GitHub Pages settings! 🎉

@@ -1,9 +1,10 @@
-name: Deploy React App to GitHub Pages
+name: Deploy React App to GitHub Pages (Native - DISABLED)
 
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:  # Allow manual triggering
+# Disabled to prevent conflicts with gh-pages branch deployment
+# on:
+#   push:
+#     branches: [ main ]
+#   workflow_dispatch:  # Allow manual triggering
 
 # Allow permissions for GitHub Pages deployment
 permissions:
